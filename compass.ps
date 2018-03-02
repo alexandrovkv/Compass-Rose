@@ -1,0 +1,198 @@
+%!PS-Adobe-3.0
+%%Creator: Alexandrov K.V.
+%%Title: Compass rose
+%%Pages 1
+%%DocumentMedia: a4 200 200 80 () ()
+%%Orientation: Portrait
+%%EndComments
+
+% gs -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pngalpha -sOutputFile=compass.png compass.ps
+
+
+/page-size 200 def
+
+<< /PageSize [page-size page-size] >> setpagedevice
+
+
+/ext-radius page-size 2.3 div def
+/in-radius ext-radius 8 div def
+/ext-radius2 45 sin ext-radius mul def
+/in-radius2 ext-radius2 7 div def
+/ext-radius3 45 sin ext-radius2 mul def
+/in-radius3 ext-radius3 8 div def
+/ext-radius4 45 sin ext-radius3 mul def
+/in-radius4 ext-radius4 9 div def
+
+/label-offset page-size 100 div def
+
+/stroke-color {0 0 0} def
+/font-color {0 0 0} def
+/dark-color {0 0 0} def
+/light-color {210 210 210} def
+
+/cardinal-rhumbs [
+    (N) (E) (S) (W)
+] def
+/ordinal-rhumbs [
+    (NE) (SE) (SW) (NW)
+] def
+/interordinal-rhumbs [
+    (NNE) (ENE) (ESE) (SSE) (SSW) (WSW) (WNW) (NNW)
+] def
+/subinterordinal-rhumbs [
+    (NtE) (NEtN) (NEtE) (EtN) (EtS) (SEtE) (SEtS) (StE) (StW) (SWtS) (SWtW) (WtS) (WtN) (NWtW) (NWtN) (NtW)
+] def
+
+/setrgb {
+    /b exch def
+    /g exch def
+    /r exch def
+    r 255 div g 255 div b 255 div setrgbcolor
+} def
+/rgbstroke {
+    setrgb stroke
+} def
+/rgbfill {
+    setrgb fill
+} def
+
+%%EndProlog
+
+
+%%Page 1 1
+
+page-size 2 div dup translate
+0 setlinewidth
+
+
+gsave
+-45 4 div rotate
+
+font-color setrgb
+/Hack-Bold findfont ext-radius4 9 div scalefont setfont
+subinterordinal-rhumbs {
+    dup stringwidth pop 2 div neg ext-radius4 label-offset add moveto
+    %gsave
+    %90 rotate
+    %show
+    %grestore
+    -45 2 div rotate
+} forall
+
+0 45 2 div 360 {
+} for
+grestore
+
+
+gsave
+-45 2 div rotate
+
+font-color setrgb
+/Hack-Bold findfont ext-radius3 8 div scalefont setfont
+interordinal-rhumbs {
+    dup stringwidth pop 2 div neg ext-radius3 label-offset add moveto
+    show
+    -45 rotate
+} forall
+
+0 45 360 {
+    newpath
+    gsave
+    0 0 moveto
+    rotate
+    ext-radius3 0 rlineto
+    ext-radius3 in-radius3 sub neg in-radius3 neg rlineto
+    closepath
+    gsave
+    dark-color rgbfill
+    grestore
+    stroke-color rgbstroke
+    newpath
+    0 0 moveto
+    ext-radius3 0 rlineto
+    ext-radius3 in-radius3 sub neg in-radius3 rlineto
+    closepath
+    gsave
+    light-color rgbfill
+    grestore
+    stroke-color rgbstroke
+    grestore
+} for
+grestore
+
+
+gsave
+-45 rotate
+
+font-color setrgb
+/Hack-Bold findfont ext-radius2 7 div scalefont setfont
+ordinal-rhumbs {
+    dup stringwidth pop 2 div neg ext-radius2 label-offset add moveto
+    show
+    -90 rotate
+} forall
+
+0 90 360 {
+    newpath
+    gsave
+    0 0 moveto
+    rotate
+    ext-radius2 0 rlineto
+    ext-radius2 in-radius2 sub neg in-radius2 neg rlineto
+    closepath
+    gsave
+    dark-color rgbfill
+    grestore
+    stroke-color rgbstroke
+    newpath
+    0 0 moveto
+    ext-radius2 0 rlineto
+    ext-radius2 in-radius2 sub neg in-radius2 rlineto
+    closepath
+    gsave
+    light-color rgbfill
+    grestore
+    stroke-color rgbstroke
+    grestore
+} for
+grestore
+
+
+gsave
+font-color setrgb
+/Hack-Bold findfont ext-radius 6 div scalefont setfont
+cardinal-rhumbs {
+    dup stringwidth pop 2 div neg ext-radius label-offset add moveto
+    show
+    -90 rotate
+} forall
+
+0 90 360 {
+    newpath
+    gsave
+    0 0 moveto
+    rotate
+    ext-radius 0 rlineto
+    ext-radius in-radius sub neg in-radius neg rlineto
+    closepath
+    gsave
+    dark-color rgbfill
+    grestore
+    stroke-color rgbstroke
+    newpath
+    0 0 moveto
+    ext-radius 0 rlineto
+    ext-radius in-radius sub neg in-radius rlineto
+    closepath
+    gsave
+    light-color rgbfill
+    grestore
+    stroke-color rgbstroke
+    grestore
+} for
+grestore
+
+
+showpage
+
+%%EOF
